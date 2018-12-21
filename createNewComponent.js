@@ -8,7 +8,7 @@
 // refer to this link: https://medium.com/@arnaudrinquin/build-modular-application-with-npm-local-modules-dfc5ff047bcc
 
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('.config', 'utf-8'))// write some files
+const config = JSON.parse(fs.readFileSync('.config', 'utf-8'))
 const generateComponent = require(config.componentTemplate);
 const generateActions = require(config.actionTemplate);
 const generateReducer = require(config.reducerTemplate);
@@ -43,9 +43,9 @@ try {
         _writeToFile(generateReducer(componentName),`${componentName}Reducer`);
 } catch (e) {
     // how did I get here?
-    console.error(e);
     console.error("It looks like there was an error writing to the specified file or directory.");
     console.error("Double check that the directory specified in componentRoot exists and is writable.");
+    console.error(e);
 }
 
 // write contents to file.
