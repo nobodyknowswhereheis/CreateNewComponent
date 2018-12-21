@@ -2,7 +2,7 @@
   "name": "create-react-component",
   "version": "1.0.0",
   "description": "Automatically generate a react/redux component and all boilerplate files",
-  "main": "app.js",
+  "main": "createNewComponent.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
