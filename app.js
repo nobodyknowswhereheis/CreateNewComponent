@@ -1,8 +1,9 @@
 const fs = require('fs');
-const generateComponent = require('./generateComponent');
-const generateActions = require('./generateActions');
-const generateReducer = require('./generateReducer');
-// write some files
+const config = JSON.parse(fs.readFileSync('.config', 'utf-8'))// write some files
+
+const generateComponent = require(config.componentTemplate);
+const generateActions = require(config.actionTemplate);
+const generateReducer = require(config.reducerTemplate);
 // refer to https://ourcodeworld.com/articles/read/297/how-to-create-a-file-using-the-filesystem-fs-module-in-node-js
 
 // call the generators and then write the files to a directory.
@@ -20,11 +21,11 @@ if (!componentName) {
 // process.argv.forEach(function (val, index, array) {
 //     console.log(index + ': ' + val);
 // });
-
+console.log(config.componentRoot);
 try {
     _writeToFile(generateComponent(componentName),componentName);
-    _writeToFile(generateActions(componentName),`${componentName}Actions.js`);
-    _writeToFile(generateReducer(componentName),`${componentName}Reducer.js`);
+    _writeToFile(generateActions(componentName),`${componentName}Actions`);
+    _writeToFile(generateReducer(componentName),`${componentName}Reducer`);
 } catch (e) {
     console.error(e);
 }
