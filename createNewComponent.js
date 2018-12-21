@@ -1,9 +1,11 @@
 // ***************** createNewComponent.js *******************
 // Create all of the files needed for a new react/redux component
-// in a new directory.
+// and place them in a new directory.
 //
 // Author: Jesse Adams
 // Date: 12/21/2018
+
+// refer to this link: https://medium.com/@arnaudrinquin/build-modular-application-with-npm-local-modules-dfc5ff047bcc
 
 const fs = require('fs');
 const config = JSON.parse(fs.readFileSync('.config', 'utf-8'))// write some files
