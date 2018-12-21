@@ -18,14 +18,20 @@ if (!componentName) {
     return;
 }
 
-// process.argv.forEach(function (val, index, array) {
-//     console.log(index + ': ' + val);
-// });
-console.log(config.componentRoot);
 try {
+    try{
+        process.chdir(`${config.componentRoot}/${componentName}`);
+    }catch(e){
+        console.warn("Component directory not found in "+config.componentRoot+" creating new directory...");
+        fs.mkdirSync(`${config.componentRoot}/${componentName}`)
+        process.chdir(`${config.componentRoot}/${componentName}`);
+    }
+    console.log("Writing files from templates...");
     _writeToFile(generateComponent(componentName),componentName);
-    _writeToFile(generateActions(componentName),`${componentName}Actions`);
-    _writeToFile(generateReducer(componentName),`${componentName}Reducer`);
+    if(shouldBuildActions)
+        _writeToFile(generateActions(componentName),`${componentName}Actions`);
+    if(shouldBuildReducers)
+        _writeToFile(generateReducer(componentName),`${componentName}Reducer`);
 } catch (e) {
     console.error(e);
 }
@@ -37,6 +43,6 @@ function _writeToFile(content,fileName){
     fs.writeFile(`${fileName}.js`, content, encoding, (err) => {
         if (err) throw err;
     
-        console.log("The file was succesfully saved!");
+        console.log("The file "+fileName+" was succesfully saved!");
     });
 }
