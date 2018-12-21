@@ -44,6 +44,8 @@ try {
 } catch (e) {
     // how did I get here?
     console.error(e);
+    console.error("It looks like there was an error writing to the specified file or directory.");
+    console.error("Double check that the directory specified in componentRoot exists and is writable.");
 }
 
 // write contents to file.
