@@ -8,7 +8,12 @@
 // refer to this link: https://medium.com/@arnaudrinquin/build-modular-application-with-npm-local-modules-dfc5ff047bcc
 
 const fs = require('fs');
-const config = JSON.parse(fs.readFileSync('.config', 'utf-8'))
+const defaultConfig = JSON.parse(fs.readFileSync('./node_modules/.config', 'utf-8'))
+const userConfig = JSON.parse(fs.readFileSync('.componentConfig', 'utf-8'))
+const config = {
+    ...defaultConfig,
+    ...userConfig
+}
 const generateComponent = require(config.componentTemplate);
 const generateActions = require(config.actionTemplate);
 const generateReducer = require(config.reducerTemplate);
@@ -38,9 +43,9 @@ try {
     console.log("Writing files from templates...");
     _writeToFile(generateComponent(componentName),componentName);
     if(shouldBuildActions)
-        _writeToFile(generateActions(componentName),`${componentName}Actions`);
+        _writeToFile(generateActions(componentName,config.default_actions),`${componentName}Actions`);
     if(shouldBuildReducers)
-        _writeToFile(generateReducer(componentName),`${componentName}Reducer`);
+        _writeToFile(generateReducer(componentName,config.default_actions),`${componentName}Reducer`);
 } catch (e) {
     // how did I get here?
     console.error("It looks like there was an error writing to the specified file or directory.");
