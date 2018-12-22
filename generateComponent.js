@@ -1,9 +1,13 @@
 // code goes here
-module.exports = function generateComponent(compName){
-    const template = `
-    import React, {PropTypes} from 'react';
+module.exports = function generateComponent(compName) {
+  const template = `
+    iimport React, { Component } from 'react';
+    import propTypes from "prop-types";
     
     export class ${compName} extends React.Component {
+      constructor(props) {
+        super(props);
+      }
       render() {
         return (
           <div>
@@ -12,7 +16,10 @@ module.exports = function generateComponent(compName){
         )
       }
     }
+    SimpleList.propTypes = {
+      
+  }
     `;
-    
-    return template;
+
+  return template;
 }
