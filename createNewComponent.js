@@ -8,7 +8,7 @@
 // refer to this link: https://medium.com/@arnaudrinquin/build-modular-application-with-npm-local-modules-dfc5ff047bcc
 
 const fs = require('fs');
-const defaultConfig = JSON.parse(fs.readFileSync('./node_modules/.config', 'utf-8'))
+const defaultConfig = JSON.parse(fs.readFileSync('./node_modules/create-react-component/.config', 'utf-8'))
 const userConfig = JSON.parse(fs.readFileSync('.componentConfig', 'utf-8'))
 const config = {
     ...defaultConfig,
