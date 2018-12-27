@@ -1,9 +1,0 @@
-{
-    "componentRoot": "./src/components",
-    "componentTemplate": "./generateComponent",
-    "actionTemplate": "./generateActions",
-    "reducerTemplate": "./generateReducer",
-    "default_actions": [
-        "_LOADING", "_FETCH_DATA", "_FETCH_COMPLETE", "_LOADING_COMPLETE"
-    ]
-}
