@@ -1,6 +1,6 @@
 {
   "name": "create-react-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatically generate a react/redux component and all boilerplate files",
   "main": "createNewComponent.js",
   "scripts": {
