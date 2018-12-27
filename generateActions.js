@@ -5,8 +5,10 @@ module.exports = function generateActions(compName,default_actions){
      return `
      export const ${name} = '${name}';`;
   });
-  var clean = actions.toString().replace(',','\n');
+  var clean = actions.toString().replace(new RegExp(',', 'g'), '');
+  console.log(clean);
     const template = `
+    // default actions
     ${clean}
     `;
     

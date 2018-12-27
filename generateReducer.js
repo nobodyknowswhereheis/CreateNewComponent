@@ -10,16 +10,16 @@ module.exports = function generateReducer(compName, default_actions) {
        case ${name}:
             return {
             ...state
-            };
-        `
+            };`
     });
+    var clean = actions.toString().replace(new RegExp('\};,', 'g'), '};');
     const template = `
     import {${imports}} from './${compName}Actions';
 
     export function ${compName}Reducer(state, action) {
 
       switch (action.type) {
-          ${actions}
+          ${clean}
           default:
               return state;
       }
